@@ -1,0 +1,32 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mail_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00dddd"
+    tools:context=".MainActivity" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:id="@+id/dir_name"
+         >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="收件箱" 
+            android:textSize="@dimen/title_size"/>
+        
+    </LinearLayout>
+	
+    <ListView 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/mail_list"
+        android:layout_below="@id/dir_name"></ListView>
+
+</RelativeLayout>

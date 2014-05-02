@@ -1,0 +1,57 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="200dip"
+    android:layout_height="match_parent"
+    android:background="#00ffff"
+    android:orientation="vertical"
+    tools:context=".MainActivity" >
+
+    <TextView
+        android:id="@+id/email_address_p"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:layout_weight="0.65" >
+    </TextView>
+
+    <Button
+        android:id="@+id/newmail"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClick1"
+        android:text="@string/newmail" />
+    <Button
+        android:id="@+id/receive_box_btn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClick1"
+        android:text="@string/receive_box" />
+
+    <Button
+        android:id="@+id/send_box_btn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClick1"
+        android:text="@string/send_box" />
+
+    <Button
+        android:id="@+id/draft_box_btn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClick1"
+        android:text="@string/draft_box" />
+
+    <Button
+        android:id="@+id/trash_box_btn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClick1"
+        android:text="@string/trash_box" />
+
+    <Button
+        android:id="@+id/exit_btn_btn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClick1"
+        android:text="@string/exit_btn" />
+
+</LinearLayout>
