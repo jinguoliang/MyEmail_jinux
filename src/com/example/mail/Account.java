@@ -103,7 +103,7 @@ public class Account implements Serializable {
 
 	private String getInBoxServer(String address) {
 
-		return "smtp.163.com";
+		return "pop3.163.com";
 	}
 
 	private Session getSession() {
@@ -139,6 +139,7 @@ public class Account implements Serializable {
 
 		mUser = address;
 		mServer = getInBoxServer(address);
+		mPassword=pass;
 
 		URLName urln = new URLName("pop3", getOutBoxServer(address), 110, null,
 				address, pass);
@@ -150,7 +151,7 @@ public class Account implements Serializable {
 
 	private String getOutBoxServer(String address) {
 
-		return "pop3.163.com";
+		return "smtp.163.com";
 	}
 
 }

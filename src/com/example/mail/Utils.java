@@ -46,10 +46,13 @@ public class Utils {
 		public WaitDialog(Context c, String title, int which, Handler mHandler) {
 			mRoll = new ProgressDialog(c);
 			mRoll.setTitle(title);
+			mRoll.setCanceledOnTouchOutside(false);
 			mRoll.show();
 			this.mHandler = mHandler;
 			this.mWhich = which;
 		}
+		
+		
 
 		protected Long doInBackground(MyRun... run) {
 			// int count = urls.length;

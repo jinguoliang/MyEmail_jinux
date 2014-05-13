@@ -12,6 +12,7 @@ import android.text.Editable;
 import android.text.InputType;
 import android.text.Selection;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -43,6 +44,7 @@ public class LoginActivity extends Activity implements OnClickListener,
 
 	final static int MSG_LOGIN_INBOX = 1;
 	final static int MSG_LOGIN_OUTBOX = 2;
+	protected static final String TAG = "LoginActivity";
 
 	Handler mHandler = new Handler() {
 		public void dispatchMessage(android.os.Message msg) {
@@ -185,7 +187,7 @@ public class LoginActivity extends Activity implements OnClickListener,
 	}
 
 	private void loginOutBox() {
-		new WaitDialog(this, "登录收件箱", MSG_LOGIN_OUTBOX, mHandler)
+		new WaitDialog(this, "登录发件箱", MSG_LOGIN_OUTBOX, mHandler)
 				.execute(new Utils.MyRun[] { new Utils.MyRun() {
 
 					@Override
@@ -195,7 +197,9 @@ public class LoginActivity extends Activity implements OnClickListener,
 							mAccount.loginOutBox(Utils.getText(mEmailView),
 									Utils.getText(mPasswordView));
 						} catch (Exception e) {
-							e.printStackTrace();
+							Log.e(TAG,Log.getStackTraceString(e));
+							Log.e(TAG,"login failed");
+							
 							return -1;
 						}
 						return 1;
@@ -204,17 +208,18 @@ public class LoginActivity extends Activity implements OnClickListener,
 	}
 
 	private void loginInBox() {
-		Utils.WaitDialog waiting = new WaitDialog(this, "登录发件箱",
+		Utils.WaitDialog waiting = new WaitDialog(this, "登录收件箱",
 				MSG_LOGIN_INBOX, mHandler);
 		waiting.execute(new Utils.MyRun[] { new Utils.MyRun() {
 
 			@Override
 			public int run() {
 				try {
-					mAccount.loginOutBox(Utils.getText(mEmailView),
+					mAccount.loginInBox(Utils.getText(mEmailView),
 							Utils.getText(mPasswordView));
 				} catch (Exception e) {
-					e.printStackTrace();
+					Log.e(TAG,Log.getStackTraceString(e));
+					Log.e(TAG,"login failed");
 					return -1;
 				}
 				return 1;

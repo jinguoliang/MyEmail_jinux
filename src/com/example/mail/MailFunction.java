@@ -35,7 +35,8 @@ public class MailFunction {
 			
 			Session s=account.getOutSession();
 			MimeMessage msg = new MimeMessage(s);
-			
+			Log.e(TAG,s.toString());
+			//set the info of email
 			msg.setSentDate(new Date());
 			
 			InternetAddress fromAddress = new InternetAddress(account.getUser(), account.getUser(),
@@ -43,15 +44,20 @@ public class MailFunction {
 			msg.setFrom(fromAddress);
 			
 			InternetAddress[] toAddress = new InternetAddress[recipients.length];
-			for (int i = 0; i < recipients.length; i++)
+			for (int i = 0; i < recipients.length; i++){
 				toAddress[i] = new InternetAddress(recipients[i]);
+				Log.e(TAG,recipients[i]);
+			}
 			msg.setRecipients(Message.RecipientType.TO, toAddress);
 			
 			msg.setSubject(subject, "UTF-8");
 			msg.setText(body, "UTF-8");
 			msg.saveChanges();
-			
-			account.getTransport().sendMessage(msg, msg.getAllRecipients());
+			Log.e(TAG,"sending");
+			Transport transport=account.getTransport();
+			if(!transport.isConnected())
+				transport.connect();
+			transport.sendMessage(msg, msg.getAllRecipients());
 			Log.e(TAG,"send ok");
 		} catch (NoSuchProviderException e) {
 			e.printStackTrace();

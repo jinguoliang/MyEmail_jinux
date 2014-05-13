@@ -109,8 +109,10 @@ public class MainActivity extends Activity {
 					try {
 						Session session = ReceiveMail.getSession();
 						Store store = ReceiveMail.getStore();
+						store.connect();
 						Folder folder = ReceiveMail.getFolder("INBOX");
 						ReceiveMail.listMessageInFolder(folder, mListAdapter);
+						store.close();
 					} catch (Exception e) {
 						Log.getStackTraceString(e);
 						Log.e(TAG, "error");
