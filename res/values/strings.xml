@@ -24,5 +24,8 @@
     <string name="next">下一步</string>
     <string name="showpassword">显示密码</string>
     <string name="auto_login">自动登录</string>
+    <string name="signature">签名</string>
+    <string name="subject">主题</string>
+    <string name="recipe_address">收件人地址</string>
 
 </resources>
